@@ -1,4 +1,6 @@
-﻿namespace Kijitora.ImportExport
+﻿using System;
+
+namespace Kijitora.ImportExport
 {
     public class CsvColumn
     {
@@ -8,6 +10,11 @@
 
         public CsvColumn(CsvHeader header, CsvField field, int index)
         {
+            if (header is null || field is null)
+            {
+                throw new ArgumentException();
+            }
+
             Header = header.Name;
             Field = field.Name;
             Index = index;

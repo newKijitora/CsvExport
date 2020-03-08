@@ -26,16 +26,26 @@ namespace Kijitora.ImportExport
             {
                 throw new FileNotFoundException();
             }
+            
+            PropertyInfo[] propInfos = null;
 
-            // CSVは値をダブルクォートで囲むのが原則
-            string quate = config.DoubleQuateRequired ? "\"" : "";
+            try
+            {
+                propInfos = objs.First().ExtractProperties(format.Fields).ToArray();
+            }
+            catch
+            {
+                throw new ArgumentException();
+            }
 
-            PropertyInfo[] propInfos = objs.First().ExtractProperties(format.Fields).ToArray();
             int propLength = propInfos.Length;
 
             using (FileStream stream = new FileStream(outputPath, FileMode.Create, FileAccess.ReadWrite))
             using (StreamWriter writer = new StreamWriter(stream, config.Encoding))
             {
+                // CSVは値をダブルクォートで囲むのが原則
+                string quate = config.DoubleQuateRequired ? "\"" : "";
+
                 // ヘッダーの出力
                 if (config.HeaderRequired)
                 {
