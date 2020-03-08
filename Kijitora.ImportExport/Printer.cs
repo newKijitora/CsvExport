@@ -9,6 +9,7 @@ namespace Kijitora.ImportExport
 {
     public static class Printer
     {
+        // CSVファイルを出力します。
         public static void CsvExport<T>(this IEnumerable<T> objs, string outputPath, CsvFormat format, CsvConfig config)
         {
             if (objs is null)
