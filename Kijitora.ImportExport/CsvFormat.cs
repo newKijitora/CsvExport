@@ -16,6 +16,11 @@ namespace Kijitora.ImportExport
                 throw new ArgumentNullException();
             }
 
+            if (!columns.Any())
+            {
+                throw new ArgumentException();
+            }
+
             var sortedColumns = columns.OrderBy(column => column.Index).ToArray();
             var columnCount = sortedColumns.Length;
 
