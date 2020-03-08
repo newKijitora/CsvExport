@@ -40,6 +40,11 @@ namespace Kijitora.ImportExport
 
             int propLength = propInfos.Length;
 
+            if (propLength == 0)
+            {
+                throw new ArgumentException();
+            }
+
             using (FileStream stream = new FileStream(outputPath, FileMode.Create, FileAccess.ReadWrite))
             using (StreamWriter writer = new StreamWriter(stream, config.Encoding))
             {
