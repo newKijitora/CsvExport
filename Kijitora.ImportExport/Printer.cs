@@ -12,7 +12,7 @@ namespace Kijitora.ImportExport
         // CSVファイルを出力します。
         public static void CsvExport<T>(this IEnumerable<T> objs, string outputPath, CsvFormat format, CsvConfig config)
         {
-            if (objs is null)
+            if (objs is null || outputPath is null || format is null || config is null)
             {
                 throw new ArgumentNullException();
             }
@@ -20,6 +20,11 @@ namespace Kijitora.ImportExport
             if (!objs.Any())
             {
                 throw new ArgumentException();
+            }
+
+            if (!File.Exists(outputPath))
+            {
+                throw new FileNotFoundException();
             }
 
             // CSVは値をダブルクォートで囲むのが原則
