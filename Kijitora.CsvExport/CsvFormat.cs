@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Kijitora.ImportExport
+namespace Kijitora.CsvExport
 {
     public class CsvFormat
     {

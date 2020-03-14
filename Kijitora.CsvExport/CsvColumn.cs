@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Kijitora.ImportExport
+namespace Kijitora.CsvExport
 {
     public class CsvColumn
     {

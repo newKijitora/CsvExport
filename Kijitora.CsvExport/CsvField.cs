@@ -1,4 +1,4 @@
-﻿namespace Kijitora.ImportExport
+﻿namespace Kijitora.CsvExport
 {
     public class CsvField
     {
