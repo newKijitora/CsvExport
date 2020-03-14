@@ -5,7 +5,7 @@
 ライブラリを参照するプログラムから、下記のようにお使いください。  
 下記は、コンソールアプリケーションから使用する例です。
 
-```
+```C#
 class Program
 {
     using System.Collections.Generic;
