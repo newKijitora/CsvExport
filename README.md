@@ -31,7 +31,8 @@ namespace SampleNamespace
             // フォーマットを生成する
             CsvFormat format = new CsvFormat(new List<CsvColumn>
             {
-                // CsvFieldに渡す型は、string型、もしくは型のToString()メソッドで適切な文字列が出力されるプロパティ/フィールドを指定してください。
+                // CsvFieldに渡す型は、string型、もしくは型のToString()メソッドで
+                // 適切な文字列が出力されるプロパティ/フィールドを指定してください。
                 new CsvColumn(new CsvHeader("名前"), new CsvField(nameof(Character.Name)), 1),
                 new CsvColumn(new CsvHeader("性別"), new CsvField(nameof(Character.Sex)), 2),
                 new CsvColumn(new CsvHeader("職業"), new CsvField(nameof(Character.Job)), 3),
