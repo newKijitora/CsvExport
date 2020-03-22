@@ -57,21 +57,23 @@ namespace Kijitora.CsvExport
             {
                 for (int i = 0; i < format.Headers.Length; i++)
                 {
-                    var header = new StringBuilder(format.Headers[i].Name);
+                    StringBuilder header = new StringBuilder(format.Headers[i].Name);
 
                     if (!config.DoubleQuateRequired)
                     {
                         config.ParseColumn(ref header);
                     }
 
-                    stringBuilder.Append(quate);
-                    stringBuilder.Append(config.DoubleQuateEscapeRequired ? header.Replace("\"", "\"\"") : header);
-                    stringBuilder.Append(quate);
-                    stringBuilder.Append(config.Delimiter);
+                    stringBuilder
+                        .Append(quate)
+                        .Append(config.DoubleQuateEscapeRequired ? header.Replace("\"", "\"\"") : header)
+                        .Append(quate)
+                        .Append(config.Delimiter);
                 }
 
-                stringBuilder.Remove(stringBuilder.Length - config.Delimiter.Length, config.Delimiter.Length);
-                stringBuilder.Append(newLineCode);
+                stringBuilder
+                    .Remove(stringBuilder.Length - config.Delimiter.Length, config.Delimiter.Length)
+                    .Append(newLineCode);
             }
 
             if (propInfos != null)
@@ -81,21 +83,23 @@ namespace Kijitora.CsvExport
                 {
                     for (int i = 0; i < propInfos.Length; i++)
                     {
-                        var field = new StringBuilder(propInfos[i].GetValue(obj).ToString());
+                        StringBuilder field = new StringBuilder(propInfos[i].GetValue(obj).ToString());
 
                         if (!config.DoubleQuateRequired)
                         {
                             config.ParseColumn(ref field);
                         }
 
-                        stringBuilder.Append(quate);
-                        stringBuilder.Append(config.DoubleQuateEscapeRequired ? field.Replace("\"", "\"\"") : field);
-                        stringBuilder.Append(quate);
-                        stringBuilder.Append(config.Delimiter);
+                        stringBuilder
+                            .Append(quate)
+                            .Append(config.DoubleQuateEscapeRequired ? field.Replace("\"", "\"\"") : field)
+                            .Append(quate)
+                            .Append(config.Delimiter);
                     }
 
-                    stringBuilder.Remove(stringBuilder.Length - config.Delimiter.Length, config.Delimiter.Length);
-                    stringBuilder.Append(newLineCode);
+                    stringBuilder
+                        .Remove(stringBuilder.Length - config.Delimiter.Length, config.Delimiter.Length)
+                        .Append(newLineCode);
                 }
             }
 
