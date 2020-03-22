@@ -1,9 +1,9 @@
 # CsvExport
 
-## g‚¢•û
+## ï¿½gï¿½ï¿½ï¿½ï¿½
 
-ƒ‰ƒCƒuƒ‰ƒŠ‚ğQÆ‚·‚éƒvƒƒOƒ‰ƒ€‚©‚çA‰º‹L‚Ì‚æ‚¤‚É‚¨g‚¢‚­‚¾‚³‚¢B  
-‰º‹L‚ÍAƒRƒ“ƒ\[ƒ‹ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚©‚çg—p‚·‚é—á‚Å‚·B
+ï¿½ï¿½ï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Qï¿½Æ‚ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Lï¿½Ì‚æ‚¤ï¿½É‚ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B  
+ï¿½ï¿½ï¿½Lï¿½ÍAï¿½Rï¿½ï¿½ï¿½\ï¿½[ï¿½ï¿½ï¿½Aï¿½vï¿½ï¿½ï¿½Pï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½gï¿½pï¿½ï¿½ï¿½ï¿½ï¿½Å‚ï¿½ï¿½B
 
 ```C#
 using System.Collections.Generic;
@@ -15,62 +15,62 @@ namespace SampleNamespace
     {
         static void Main(string[] args)
         {
-            // •Û‘¶æ‚Ìƒtƒ@ƒCƒ‹ƒpƒX
+            // ï¿½Û‘ï¿½ï¿½ï¿½Ìƒtï¿½@ï¿½Cï¿½ï¿½ï¿½pï¿½X
             string path = @"C:\...save-path";
 
-            // ƒTƒ“ƒvƒ‹‚Ìƒf[ƒ^‚ğ¶¬‚·‚é
+            // ï¿½Tï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Ìƒfï¿½[ï¿½^ï¿½ğ¶ï¿½ï¿½ï¿½ï¿½ï¿½
             List<Character> characters = new List<Character>
             {
-                new Character("ƒA[ƒT[", "’j", "—EÒ", 17),
-                new Character("ƒ‚[ƒKƒ“", "’j", "ím", 25),
-                new Character("ƒGƒŠƒX", "—", "Œ«Ò", 14),
-                new Character("ƒ}ƒM[", "—", "–‚–@g‚¢", 21)
+                new Character("ï¿½Aï¿½[ï¿½Tï¿½[", "ï¿½j", "ï¿½Eï¿½ï¿½", 17),
+                new Character("ï¿½ï¿½ï¿½[ï¿½Kï¿½ï¿½", "ï¿½j", "ï¿½ï¿½m", 25),
+                new Character("ï¿½Gï¿½ï¿½ï¿½X", "ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", 14),
+                new Character("ï¿½}ï¿½Mï¿½[", "ï¿½ï¿½", "ï¿½ï¿½ï¿½@ï¿½gï¿½ï¿½", 21)
             };
 
-            // ƒtƒH[ƒ}ƒbƒg‚ğ¶¬‚·‚é
+            // ï¿½tï¿½Hï¿½[ï¿½}ï¿½bï¿½gï¿½ğ¶ï¿½ï¿½ï¿½ï¿½ï¿½
             CsvFormat format = new CsvFormat(new List<CsvColumn>
             {
-                new CsvColumn(new CsvHeader("–¼‘O"), new CsvField(nameof(Character.Name)), 1),
-                new CsvColumn(new CsvHeader("«•Ê"), new CsvField(nameof(Character.Sex)), 2),
-                new CsvColumn(new CsvHeader("E‹Æ"), new CsvField(nameof(Character.Job)), 3),
-                new CsvColumn(new CsvHeader("ƒŒƒxƒ‹"), new CsvField(nameof(Character.Level)), 4)
+                new CsvColumn(new CsvHeader("ï¿½ï¿½ï¿½O"), new CsvField(nameof(Character.Name)), 1),
+                new CsvColumn(new CsvHeader("ï¿½ï¿½ï¿½ï¿½"), new CsvField(nameof(Character.Sex)), 2),
+                new CsvColumn(new CsvHeader("ï¿½Eï¿½ï¿½"), new CsvField(nameof(Character.Job)), 3),
+                new CsvColumn(new CsvHeader("ï¿½ï¿½ï¿½xï¿½ï¿½"), new CsvField(nameof(Character.Level)), 4)
             });
 
-            // İ’è‚ğ¶¬‚·‚é
+            // ï¿½İ’ï¿½ğ¶ï¿½ï¿½ï¿½ï¿½ï¿½
             CsvConfig config = new CsvConfig();
 
-            // ‚¢‚ë‚¢‚ëİ’è‚·‚é
+            // ï¿½ï¿½ï¿½ë‚¢ï¿½ï¿½İ’è‚·ï¿½ï¿½
             config.HeaderRequired = true;
             config.Delimiter = ",";
             config.NewLineAtLastLine = false;
             config.DoubleQuateRequired = false;
             config.NewLineCode = NewLineCode.CRLF;
-            config.DoubleQuateEscaped = false;
+            config.DoubleQuateEscapeRequired = false;
 
-            // •W€‚Ìİ’è‚ÉƒŠƒZƒbƒg‚·‚é
+            // ï¿½Wï¿½ï¿½ï¿½Ìİ’ï¿½Éƒï¿½ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½
             config.ResetToStandard();
 
-            // ƒGƒNƒXƒ|[ƒg
+            // ï¿½Gï¿½Nï¿½Xï¿½|ï¿½[ï¿½g
             characters.CsvExport(path, format, config);
         }
     }
 
-    // ƒTƒ“ƒvƒ‹ƒNƒ‰ƒX
+    // ï¿½Tï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½X
     public class Character
     {
-        // ƒLƒƒƒ‰ƒNƒ^[‚Ì–¼‘O
+        // ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½Ì–ï¿½ï¿½O
         public string Name { get; private set; }
 
-        // ƒLƒƒƒ‰ƒNƒ^[‚Ì«•Ê
+        // ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½Ìï¿½ï¿½ï¿½
         public string Sex { get; private set; }
 
-        // ƒLƒƒƒ‰ƒNƒ^[‚ÌE‹Æ
+        // ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½ÌEï¿½ï¿½
         public string Job { get; private set; }
 
-        // ƒLƒƒƒ‰ƒNƒ^[‚ÌƒŒƒxƒ‹
+        // ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½Ìƒï¿½ï¿½xï¿½ï¿½
         public int Level { get; private set; }
 
-        // ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        // ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
         public Character(string name, string sex, string job, int level)
         {
             Name = name;

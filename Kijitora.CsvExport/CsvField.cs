@@ -2,11 +2,11 @@
 {
     public class CsvField
     {
+        public string Name { get; set; }
+
         public CsvField(string fieldName)
         {
             Name = fieldName;
         }
-
-        public string Name { get; }
     }
 }

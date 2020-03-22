@@ -6,26 +6,19 @@ namespace Kijitora.CsvExport
 {
     public class CsvFormat
     {
-        internal string[] Fields { get; }
-        internal string[] Headers { get; }
+        internal CsvField[] Fields { get; }
+        internal CsvHeader[] Headers { get; }
 
         public CsvFormat(IEnumerable<CsvColumn> columns)
         {
-            if (columns is null)
-            {
-                throw new ArgumentNullException();
-            }
+            if (columns is null) throw new ArgumentNullException();
+            if (!columns.Any()) throw new ArgumentException();
 
-            if (!columns.Any())
-            {
-                throw new ArgumentException();
-            }
+            CsvColumn[] sortedColumns = columns.OrderBy(column => column.Index).ToArray();
+            int columnCount = sortedColumns.Length;
 
-            var sortedColumns = columns.OrderBy(column => column.Index).ToArray();
-            var columnCount = sortedColumns.Length;
-
-            Fields = new string[columnCount];
-            Headers = new string[columnCount];
+            Fields = new CsvField[columnCount];
+            Headers = new CsvHeader[columnCount];
 
             for (var i = 0; i < columnCount; i++)
             {

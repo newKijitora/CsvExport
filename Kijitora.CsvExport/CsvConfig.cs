@@ -23,7 +23,7 @@ namespace Kijitora.CsvExport
         public bool DoubleQuateRequired { get; set; }
 
         // ダブルクォートをエスケープするかどうか: 初期値は「する」
-        public bool DoubleQuateEscaped { get; set; }
+        public bool DoubleQuateEscapeRequired { get; set; }
 
         // コンストラクタ
         public CsvConfig()
@@ -65,20 +65,20 @@ namespace Kijitora.CsvExport
             DoubleQuateRequired = true;
 
             // ダブルクォートをエスケープするかどうか: 初期値は「する」
-            DoubleQuateEscaped = true;
+            DoubleQuateEscapeRequired = true;
         }
 
         // 設定に従って列をパースする
         internal StringBuilder ParseColumn(ref StringBuilder builder)
         {
-            string[] controlCharacters = new[] { "\r\n", "\n", Delimiter };
+            string[] controlCharacters = new string[] { "\r\n", "\n", Delimiter };
 
-            if (DoubleQuateEscaped)
+            if (DoubleQuateEscapeRequired)
             {
                 builder.Replace("\"", "");
             }
 
-            foreach (var controlCharacter in controlCharacters)
+            foreach (string controlCharacter in controlCharacters)
             {
                 builder.Replace(controlCharacter, "");
             }

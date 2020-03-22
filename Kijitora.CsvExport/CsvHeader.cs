@@ -2,11 +2,11 @@
 {
     public class CsvHeader
     {
+        public string Name { get; set; }
+
         public CsvHeader(string headerName)
         {
             Name = headerName;
         }
-
-        public string Name { get; }
     }
 }

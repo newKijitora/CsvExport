@@ -11,23 +11,24 @@ namespace Kijitora.CsvExport
     public static class Printer
     {
         // CSVファイルを出力します。
-        public static void CsvExport<T>(this IEnumerable<T> objs, string outputPath, CsvFormat format, CsvConfig config)
+        public static void CsvExport<TSource>(this IEnumerable<TSource> source, string outputPath, CsvFormat format, CsvConfig config)
         {
-            if (objs is null || outputPath is null || format is null || config is null)
+            if (source is null || outputPath is null || format is null || config is null)
             {
                 throw new ArgumentNullException();
             }
 
-            bool fieldIsExist = false;
+            if (!File.Exists(outputPath)) throw new FileNotFoundException();
+
+            bool fieldIsExists = false;
             PropertyInfo[] propInfos = null;
 
-            if (objs.Any())
+            if (source.Any())
             {
-                fieldIsExist = true;
-
                 try
                 {
-                    propInfos = objs.First().ExtractProperties(format.Fields).ToArray();
+                    propInfos = source.First().ExtractProperties(
+                        format.Fields.Select(field => field.Name).ToArray()).ToArray();
                 }
                 catch
                 {
@@ -38,6 +39,8 @@ namespace Kijitora.CsvExport
                 {
                     throw new ArgumentException("フォーマットが不正です。");
                 }
+
+                fieldIsExists = true;
             }
 
             // 書き出し用の文字列
@@ -54,15 +57,15 @@ namespace Kijitora.CsvExport
             {
                 for (int i = 0; i < format.Headers.Length; i++)
                 {
-                    var header = new StringBuilder(format.Headers[i]);
+                    var header = new StringBuilder(format.Headers[i].Name);
 
                     if (!config.DoubleQuateRequired)
                     {
-                         config.ParseColumn(ref header);
+                        config.ParseColumn(ref header);
                     }
 
                     stringBuilder.Append(quate);
-                    stringBuilder.Append(config.DoubleQuateEscaped ? header.Replace("\"", "\"\"") : header);
+                    stringBuilder.Append(config.DoubleQuateEscapeRequired ? header.Replace("\"", "\"\"") : header);
                     stringBuilder.Append(quate);
                     stringBuilder.Append(config.Delimiter);
                 }
@@ -74,7 +77,7 @@ namespace Kijitora.CsvExport
             if (propInfos != null)
             {
                 // フィールドの出力
-                foreach (var obj in objs)
+                foreach (TSource obj in source)
                 {
                     for (int i = 0; i < propInfos.Length; i++)
                     {
@@ -86,7 +89,7 @@ namespace Kijitora.CsvExport
                         }
 
                         stringBuilder.Append(quate);
-                        stringBuilder.Append(config.DoubleQuateEscaped ? field.Replace("\"", "\"\"") : field);
+                        stringBuilder.Append(config.DoubleQuateEscapeRequired ? field.Replace("\"", "\"\"") : field);
                         stringBuilder.Append(quate);
                         stringBuilder.Append(config.Delimiter);
                     }
@@ -97,7 +100,7 @@ namespace Kijitora.CsvExport
             }
 
             // 最終行の改行を削除する必要がある場合
-            if ((fieldIsExist || config.HeaderRequired) && !config.NewLineAtLastLine)
+            if ((fieldIsExists || config.HeaderRequired) && !config.NewLineAtLastLine)
             {
                 stringBuilder.Remove(stringBuilder.Length - newLineCode.Length, newLineCode.Length);
             }
