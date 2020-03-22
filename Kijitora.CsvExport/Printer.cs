@@ -37,7 +37,7 @@ namespace Kijitora.CsvExport
 
                 if (propInfos.Length == 0)
                 {
-                    throw new ArgumentException("フォーマットが不正です。");
+                    throw new ArgumentException();
                 }
 
                 fieldIsExists = true;
