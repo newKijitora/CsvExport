@@ -31,15 +31,14 @@ namespace SampleNamespace
             // フォーマットを生成する
             CsvFormat format = new CsvFormat(new List<CsvColumn>
             {
-                // CsvFieldに渡す型は、string型、もしくは型のToString()メソッドで
-                // 適切な文字列が出力されるプロパティ/フィールドを指定してください。
+                // CsvFieldに渡された型は、ToString()メソッドを使って出力されます。
                 new CsvColumn(new CsvHeader("名前"), new CsvField(nameof(Character.Name)), 1),
                 new CsvColumn(new CsvHeader("性別"), new CsvField(nameof(Character.Sex)), 2),
                 new CsvColumn(new CsvHeader("職業"), new CsvField(nameof(Character.Job)), 3),
                 new CsvColumn(new CsvHeader("レベル"), new CsvField(nameof(Character.Level)), 4)
             });
 
-            // 設定を生成する
+            // 設定を生成する（デフォルトはCSV標準に準拠した設定となります）
             CsvConfig config = new CsvConfig();
 
             // いろいろ設定する
@@ -50,7 +49,7 @@ namespace SampleNamespace
             config.NewLineCode = NewLineCode.CRLF;
             config.DoubleQuateEscapeRequired = false;
 
-            // 標準の設定にリセットする
+            // CSV標準の設定にリセットする
             config.ResetToStandard();
 
             // エクスポート
